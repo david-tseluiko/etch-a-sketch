@@ -16,7 +16,7 @@ gridSizeButton.addEventListener("click", () => {
 });
 
 container.addEventListener("mouseover", (event) => {
-    event.target.classList.add("colored");
+    event.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)} ,${Math.floor(Math.random() * 256)})`;
 });
 
 function createGrid(size) {
