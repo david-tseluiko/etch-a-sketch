@@ -1,6 +1,11 @@
 const container = document.querySelector(".container");
 const gridSizeButton = document.querySelector(".grid-size-btn");
 
+const containerSize = window
+    .getComputedStyle(container)
+    .getPropertyValue("max-width")
+    .slice(0, -2);
+
 createGrid(16);
 
 gridSizeButton.addEventListener("click", () => {
@@ -16,7 +21,11 @@ gridSizeButton.addEventListener("click", () => {
 });
 
 container.addEventListener("mouseover", (event) => {
-    event.target.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)} ,${Math.floor(Math.random() * 256)})`;
+    event.target.style.backgroundColor = `rgb(${Math.floor(
+        Math.random() * 256
+    )}, ${Math.floor(Math.random() * 256)} ,${Math.floor(
+        Math.random() * 256
+    )})`;
 });
 
 function createGrid(size) {
@@ -24,9 +33,10 @@ function createGrid(size) {
 
     for (let i = 0; i < gridPixels; i++) {
         const gridElement = document.createElement("div");
-        gridElement.style.cssText = `width: ${700 / size}px; height: ${
-            700 / size
-        }px;`;
+
+        gridElement.style.cssText = `width: ${
+            containerSize / size
+        }px; height: ${containerSize / size}px;`;
 
         container.appendChild(gridElement);
     }
